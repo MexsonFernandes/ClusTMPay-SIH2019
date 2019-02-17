@@ -207,7 +207,7 @@ export class vPlanetApp {
       if (this.platform.is('cordova')) {
          // App rate plugin
         this.appRate.preferences.customLocale = {
-          title: "Rate vPlanet Commerce",
+          title: "ClusTMPay",
           message: "Would you mind taking a moment to rate it? It won’t take more than a minute. Thanks for your support!",
           cancelButtonLabel: "No, Thanks",
           laterButtonLabel: "Remind Me Later",
