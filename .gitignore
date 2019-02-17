@@ -1,0 +1,9 @@
+mobile-desktop-app-ionic/node_modules/
+mobile-desktop-app-ionic/platforms/
+mobile-desktop-app-ionic/plugins/
+mobile-desktop-app-ionic/.vscode/
+mobile-desktop-app-ionic/www/lib
+temp/
+*.DS_Store
+*.log
+*.swp
