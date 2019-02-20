@@ -1,1 +1,0 @@
-export const APP_ID: string = 'f8fec798';
