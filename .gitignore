@@ -7,3 +7,101 @@ temp/
 *.DS_Store
 *.log
 *.swp
+
+
+
+
+
+
+# django
+
+# Created by https://www.gitignore.io
+
+django-backend/venv/
+### OSX ###
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Icon must end with two \r
+Icon
+
+
+# Thumbnails
+._*
+
+# Files that might appear on external disk
+.Spotlight-V100
+.Trashes
+
+# Directories potentially created on remote AFP share
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+
+
+### Python ###
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+
+# C extensions
+*.so
+
+# Distribution / packaging
+.Python
+django-backend/env/
+django-backend/build/
+django-backend/develop-eggs/
+django-backend/dist/
+django-backend/downloads/
+django-backend/eggs/
+django-backend/lib/
+django-backend/lib64/
+django-backend/parts/
+django-backend/sdist/
+django-backend/var/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# PyInstaller
+#  Usually these files are written by a python script from a template
+#  before PyInstaller builds the exe, so as to inject date/other infos into it.
+*.manifest
+*.spec
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Unit test / coverage reports
+django-backend/htmlcov/
+.tox/
+.coverage
+.cache
+nosetests.xml
+coverage.xml
+
+# Translations
+*.mo
+*.pot
+
+# Sphinx documentation
+django-backend/docs/_build/
+
+# PyBuilder
+django-backend/target/
+
+
+### Django ###
+*.log
+*.pot
+*.pyc
+__pycache__/
+django-backend/local_settings.py
+
+.env
+django-backend/db.sqlite3
