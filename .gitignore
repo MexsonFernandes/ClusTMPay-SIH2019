@@ -9,6 +9,22 @@ temp/
 *.swp
 
 
+# android
+*.iml
+
+mobile-app/.gradle
+/
+mobile-app/local.properties
+mobile-app
+/.idea/workspace.xml
+mobile-app
+/.idea/libraries/
+mobile-app/
+
+mobile-app/.DS_Store
+/
+mobile-app/build
+/
 
 
 
