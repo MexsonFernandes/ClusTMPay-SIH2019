@@ -18,7 +18,7 @@ Software - Mobile App development
 
 
 
-## Team:
+## Team
   1) Mexson Fernandes (Leader)
   2) Sourabh Choubey
   3) Arvinder Pal Singh Bali

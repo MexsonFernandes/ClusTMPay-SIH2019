@@ -1,0 +1,15 @@
+language: python
+python:
+  - "3.5.2"
+# command to install dependencies
+install:
+  - pip install -r requirements.txt
+  - pip install coveralls
+# command to run tests
+script:
+  - python manage.py makemigrations
+  - python manage.py migrate
+  - coverage run --source=app_dir manage.py test
+
+after_success:
+  - coveralls
