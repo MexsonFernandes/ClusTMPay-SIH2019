@@ -58,17 +58,12 @@ __pycache__/
 
 # Distribution / packaging
 .Python
-django-backend/env/
-django-backend/build/
-django-backend/develop-eggs/
-django-backend/dist/
-django-backend/downloads/
-django-backend/eggs/
-django-backend/lib/
-django-backend/lib64/
-django-backend/parts/
-django-backend/sdist/
-django-backend/var/
+backend-server/env/
+backend-server/build/
+backend-server/develop-eggs/
+backend-server/dist/
+backend-server/downloads/
+backend-server/eggs/
 *.egg-info/
 .installed.cfg
 *.egg
@@ -84,7 +79,7 @@ pip-log.txt
 pip-delete-this-directory.txt
 
 # Unit test / coverage reports
-django-backend/htmlcov/
+backend-server/htmlcov/
 .tox/
 .coverage
 .cache
@@ -96,10 +91,10 @@ coverage.xml
 *.pot
 
 # Sphinx documentation
-django-backend/docs/_build/
+backend-server/docs/_build/
 
 # PyBuilder
-django-backend/target/
+backend-server/target/
 
 
 ### Django ###
@@ -107,7 +102,7 @@ django-backend/target/
 *.pot
 *.pyc
 __pycache__/
-django-backend/local_settings.py
+backend-server/local_settings.py
 
 .env
-django-backend/db.sqlite3
+backend-server/db.sqlite3

@@ -1,6 +1,8 @@
 # ClusTMPay | Smart India Hackathon 2019 
 
-
+<h1 align="center">
+  <img src="resources/SIH_logo.png"/>
+</h1>
 
 ## Title
 Reduce the amount of push notifications require for e-commerce apps
@@ -16,7 +18,7 @@ Software - Mobile App development
 
 
 
-Team:
+## Team:
   1) Mexson Fernandes (Leader)
   2) Sourabh Choubey
   3) Arvinder Pal Singh Bali
@@ -25,3 +27,4 @@ Team:
   6) Ajay Thakur
   7) Himanshu Chauhan (Mentor)
   
+
