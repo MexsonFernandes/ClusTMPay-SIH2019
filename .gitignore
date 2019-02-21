@@ -12,16 +12,16 @@ temp/
 # android
 *.iml
 
-mobile-app/.gradle
+mobile-app-android/.gradle
 /
-mobile-app/local.properties
-mobile-app
+mobile-app-android/local.properties
+mobile-app-android
 /.idea/workspace.xml
 mobile-app
-/.idea/libraries/
-mobile-app/.DS_Store
+-android/.idea/libraries/
+mobile-app-android/.DS_Store
 /
-mobile-app/build
+mobile-app-android/build
 /
 
 
