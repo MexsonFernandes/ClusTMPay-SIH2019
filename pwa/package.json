@@ -1,9 +1,8 @@
 {
-  "name": "saleor-site",
+  "name": "clustmpay-site",
   "version": "0.4.0",
   "private": true,
   "author": "Mirumee",
-  "homepage": "https://getsaleor.com/",
   "main": "dist/index.js",
   "browserslist": "last 2 versions",
   "dependencies": {

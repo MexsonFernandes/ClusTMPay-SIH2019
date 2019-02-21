@@ -1,10 +1,10 @@
-# Saleor Storefront
+# ClusTMPay Storefront
 
 ![1 copy 2x](https://user-images.githubusercontent.com/5421321/47798207-30aeea00-dd28-11e8-9398-3d8426836a83.png)
 
 _**Note:** This project is beta quality. We don't advise using it in production._
 
-A GraphQL-powered, PWA, single-page application storefront for [Saleor](https://github.com/mirumee/saleor/).
+A GraphQL-powered, PWA, single-page application storefront.
 
 ## Features
 - Headless ecommerce storefront built with [GraphQL](https://graphql.org/), [Apollo Client](https://www.apollographql.com/client), [React](https://reactjs.org/) and [Typescript](https://www.typescriptlang.org/)
@@ -15,7 +15,7 @@ A GraphQL-powered, PWA, single-page application storefront for [Saleor](https://
 
 ## Demo
 
-See the [public demo](http://pwa.getsaleor.com) of Saleor Storefront!
+See the [public demo](http://pwa.getsaleor.com) of ClusTMPay Storefront!
 
 Or launch the demo on a free Heroku instance. Note that you have to set the `BACKEND_URL` environment to point to the Saleor instance.
 
@@ -33,18 +33,6 @@ These instructions will get you a copy of the project up and running on your loc
     To run the storefront, you have to set the `BACKEND_URL` environment to point to the Saleor instance. If you are running Saleor locally with the default settings, set `BACKEND_URL` to: `http://localhost:8000/`.
 
 ### Installing
-
-Clone the repository:
-
-```
-git clone git@github.com:mirumee/saleor-storefront.git
-```
-
-Enter the project directory:
-
-```
-cd saleor-storefront
-```
 
 Install NPM dependencies:
 
@@ -70,4 +58,3 @@ This project is licensed under the BSD-3-Clause License - see the [LICENSE.md](L
 
 
 #### Crafted with ❤️ by [Mirumee Software](http://mirumee.com)
-hello@mirumee.com
