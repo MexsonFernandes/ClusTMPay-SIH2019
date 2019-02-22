@@ -4,7 +4,7 @@ android {
     compileSdkVersion 27
     buildToolsVersion "27.0.1"
     defaultConfig {
-        applicationId "com.allandroidprojects.ecomsample"
+        applicationId "com.allandroidprojects.clustmpay"
         minSdkVersion 21
         targetSdkVersion 27
         versionCode 1
@@ -32,4 +32,6 @@ dependencies {
     compile 'com.facebook.fresco:fresco:0.14.1'
     compile 'com.google.android.gms:play-services-location:11.8.0'
     compile 'com.google.code.gson:gson:2.8.1'
+    compile 'com.google.firebase:firebase-messaging:11.8.0'
 }
+apply plugin: 'com.google.gms.google-services'

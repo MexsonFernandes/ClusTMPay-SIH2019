@@ -6,7 +6,7 @@ Application has been designed using [fresco](https://github.com/facebook/fresco)
 
 [Find my more tutorials here ](http://allandroidprojects.blogspot.in/2016/11/ecomsample-sample-e-commerce-online.html)
 
-[Install EcomSample ](https://play.google.com/store/apps/details?id=com.allandroidprojects.ecomsample&hl=en)
+[Install EcomSample ](https://play.google.com/store/apps/details?id=clustmpay&hl=en)
 
 
 ###This app has below features:
