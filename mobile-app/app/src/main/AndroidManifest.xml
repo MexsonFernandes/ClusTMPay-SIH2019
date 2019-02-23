@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest package="com.allandroidprojects.ecomsample"
+<manifest package="com.allandroidprojects.clustmpay"
           xmlns:android="http://schemas.android.com/apk/res/android">
 
     <uses-permission android:name="android.permission.INTERNET"/>
@@ -8,7 +8,7 @@
 
     <application
 
-        android:name=".startup.FrescoApplication"
+        android:name="com.allandroidprojects.clustmpay.startup.FrescoApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher_bag"
         android:label="@string/app_name"
@@ -18,7 +18,7 @@
         <!--<service android:name=".services.DetectedActivityIntentService" />-->
         <!--<service android:name=".services.ActivityDetectionService" />-->
 
-        <activity android:name=".startup.SplashActivity">
+        <activity android:name="com.allandroidprojects.clustmpay.startup.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
@@ -30,26 +30,26 @@
                 android:value=".options.SearchResultsActivity"/>
         </activity>
         <activity
-            android:name=".startup.WelcomeActivity"
+            android:name="com.allandroidprojects.clustmpay.startup.WelcomeActivity"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
         <activity
-            android:name=".startup.MainActivity"
+            android:name="com.allandroidprojects.clustmpay.startup.MainActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
-        <activity android:name=".fragments.ViewPagerActivity"/>
-        <activity android:name=".product.ItemDetailsActivity">
+        <activity android:name="com.allandroidprojects.clustmpay.fragments.ViewPagerActivity"/>
+        <activity android:name="com.allandroidprojects.clustmpay.product.ItemDetailsActivity">
         </activity>
         <activity
-            android:name=".options.WishlistActivity"
+            android:name="com.allandroidprojects.clustmpay.options.WishlistActivity"
             android:label="@string/my_wishlist">
         </activity>
         <activity
-            android:name=".options.CartListActivity"
+            android:name="com.allandroidprojects.clustmpay.options.CartListActivity"
             android:label="@string/my_cart">
         </activity>
-        <activity android:name=".options.SearchResultActivity">
+        <activity android:name="com.allandroidprojects.clustmpay.options.SearchResultActivity">
 
             <!-- to identify this activity as "searchable.xml" -->
             <intent-filter>
@@ -62,10 +62,10 @@
                 android:name="android.app.searchable"
                 android:resource="@xml/searchable"/>
         </activity>
-        <activity android:name=".miscellaneous.EmptyActivity">
+        <activity android:name="com.allandroidprojects.clustmpay.miscellaneous.EmptyActivity">
         </activity>
 
-        <activity android:name=".ActivityRecognition.RecognitionActivity">
+        <activity android:name="com.allandroidprojects.clustmpay.ActivityRecognition.RecognitionActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
@@ -78,8 +78,31 @@
         </activity>
 
 
+        <activity
+            android:name=".firebase.Firmain">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- Firebase Notifications -->
+        <service android:name=".firebase.MyFirebaseMessagingService">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+
+        <service android:name=".firebase.MyFirebaseInstanceIDService">
+            <intent-filter>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
+            </intent-filter>
+        </service>
+        <!-- ./Firebase Notifications -->
+
         <service
-            android:name=".ActivityRecognition.ActivityIntentService"
+            android:name="com.allandroidprojects.clustmpay.ActivityRecognition.ActivityIntentService"
             android:exported="false" />
     </application>
 
