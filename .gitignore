@@ -132,15 +132,15 @@ backend-server/local_settings.py
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies
-backend-server/frontend/node_modules
-backend-server/frontend/.pnp
+admin-panel/node_modules
+admin-panel/frontend/.pnp
 .pnp.js
 
 # testing
-backend-server/frontend/coverage
+admin-panel/coverage
 
 # production
-backend-server/frontend/build
+admin-panel/build
 
 # misc
 .DS_Store

@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 DEFAULT_APPS = (
+    'django-material-admin',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -41,8 +42,8 @@ DEFAULT_APPS = (
 
 EXTERNAL_APPS = (
     'rest_framework',
-    'webpack_loader',
     'corsheaders',
+    
 )
 
 LOCAL_APPS = (
@@ -149,12 +150,6 @@ REST_FRAMEWORK = {
     ),
 }
 
-WEBPACK_LOADER = {
-    'DEFAULT': {
-            'BUNDLE_DIR_NAME': '',
-            'STATS_FILE': os.path.join(BASE_DIR, 'frontend/webpack-stats.dev.json'),
-        }
-}
 
 CORS_ORIGIN_ALLOW_ALL = False
 
