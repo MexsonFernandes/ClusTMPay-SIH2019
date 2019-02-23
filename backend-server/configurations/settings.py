@@ -44,8 +44,10 @@ EXTERNAL_APPS = (
 )
 
 LOCAL_APPS = (
-    'app_dir.user',
-    'app_dir.module',
+    'user_behaviour_data',
+    'notification_data',
+    'machine_learning_model',
+    'data',
 )
 
 INSTALLED_APPS = DEFAULT_APPS + EXTERNAL_APPS + LOCAL_APPS
