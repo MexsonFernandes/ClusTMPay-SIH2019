@@ -10,6 +10,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.LinearLayout;
 import com.allandroidprojects.clustmpay.R;
+import com.allandroidprojects.clustmpay.login.Login;
 
 public class SplashActivity extends Activity implements Animation.AnimationListener {
     Animation animFadeIn;

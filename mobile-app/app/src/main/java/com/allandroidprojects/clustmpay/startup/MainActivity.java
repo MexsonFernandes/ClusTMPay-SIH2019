@@ -22,8 +22,13 @@ import com.allandroidprojects.clustmpay.notification.NotificationCountSetClass;
 import com.allandroidprojects.clustmpay.options.CartListActivity;
 import com.allandroidprojects.clustmpay.options.SearchResultActivity;
 import com.allandroidprojects.clustmpay.options.WishlistActivity;
+import com.pusher.client.PusherOptions;
+import com.pusher.pushnotifications.PushNotifications;
 import java.util.ArrayList;
 import java.util.List;
+import com.pusher.client.Pusher;
+import com.pusher.client.channel.Channel;
+import com.pusher.client.channel.SubscriptionEventListener;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -38,6 +43,21 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        PusherOptions options = new PusherOptions();
+        options.setCluster("ap2");
+        Pusher pusher = new Pusher("b02510db19f92944ca1a", options);
+
+        Channel channel = pusher.subscribe("clustmpay_android");
+
+        channel.bind("my-event", new SubscriptionEventListener() {
+            @Override
+            public void onEvent(String channelName, String eventName, final String data) {
+                System.out.println(data);
+            }
+        });
+
+        pusher.connect();
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(

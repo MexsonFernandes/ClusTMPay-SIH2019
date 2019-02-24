@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import com.allandroidprojects.clustmpay.R;
 import com.google.firebase.messaging.FirebaseMessaging;
+import com.pusher.pushnotifications.PushNotifications;
 
 public class Firmain extends AppCompatActivity {
 
@@ -29,6 +30,7 @@ public class Firmain extends AppCompatActivity {
 
         txtRegId = (TextView) findViewById(R.id.txt_reg_id);
         txtMessage = (TextView) findViewById(R.id.txt_push_message);
+
 
         mRegistrationBroadcastReceiver = new BroadcastReceiver() {
             @Override

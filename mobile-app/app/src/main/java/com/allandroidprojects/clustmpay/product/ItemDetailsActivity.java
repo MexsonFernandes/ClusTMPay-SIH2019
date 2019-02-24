@@ -15,6 +15,7 @@ import com.allandroidprojects.clustmpay.options.CartListActivity;
 import com.allandroidprojects.clustmpay.startup.MainActivity;
 import com.allandroidprojects.clustmpay.utility.ImageUrlUtils;
 import com.facebook.drawee.view.SimpleDraweeView;
+import com.pusher.pushnotifications.PushNotifications;
 
 public class ItemDetailsActivity extends AppCompatActivity {
     int imagePosition;
@@ -26,6 +27,7 @@ public class ItemDetailsActivity extends AppCompatActivity {
         SimpleDraweeView mImageView = (SimpleDraweeView)findViewById(R.id.image1);
         TextView textViewAddToCart = (TextView)findViewById(R.id.text_action_bottom1);
         TextView textViewBuyNow = (TextView)findViewById(R.id.text_action_bottom2);
+
 
         //Getting image uri from previous screen
         if (getIntent() != null) {
