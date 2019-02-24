@@ -28,3 +28,6 @@ Software - Mobile App development
   7) Himanshu Chauhan (Mentor)
   
 
+## Steps
+	# Backend
+		export GOOGLE_APPLICATION_CREDENTIALS = BASE_DIR + "firebase_key.json"
