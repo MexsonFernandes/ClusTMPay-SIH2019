@@ -1,39 +1,22 @@
 import React, { Component } from 'react';
-
-import { Drawer, Navigation, Content, Layout, Header} from 'react-mdl';
-import { Link } from 'react-router-dom';
-import Main from './component/main';
+import Routes from '../src/components/Routes';
+import TopNavigation from './components/topNavigation';
+import SideNavigation from './components/sideNavigation';
+import Footer from './components/Footer';
+import './index.css';
 
 class App extends Component {
- 
-
-
-
-
+  
   render() {
     return (
-    
-
-      <div style={{height: '300px', position: 'relative'}}>
-     
-    <Layout fixedHeader>
-        <Header title={<span><span style={{ color: '/ddd' }}></span><strong>Admin</strong></span>}>
-          
-        </Header>
-        <Drawer title="ClusTMPay">
-            <Navigation>
-            <Link to="/users">users</Link>
-                <Link to="/products">Products</Link>
-                <Link to="/liveactivity">Live Activity</Link>
-                <Link to="/">Help</Link>
-            </Navigation>
-        </Drawer>
-        <Main/>
-        <Content />
-    </Layout>
-</div>
-  
-     
+        <div className="flexible-content">
+          <TopNavigation />
+          <SideNavigation />
+          <main id="content" className="p-5">
+            <Routes />
+          </main>
+          <Footer />
+        </div>
     );
   }
 }
