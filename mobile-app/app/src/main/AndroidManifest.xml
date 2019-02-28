@@ -62,24 +62,20 @@
 
 
 
-
-        <activity android:name=".firebase.Firmain"
-            android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar">
-
-        </activity>
+        <activity android:name=".firebase.Firmain" android:theme="@style/AppTheme.NoActionBar" android:label="@string/app_name"> </activity>
 
         <!-- Firebase Notifications -->
         <service android:name=".firebase.MyFirebaseMessagingService">
-            <intent-filter>
-                <action android:name="com.google.firebase.MESSAGING_EVENT" />
-            </intent-filter>
-        </service>
-        <service android:name=".firebase.MyFirebaseInstanceIDService">
-            <intent-filter>
-                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
-            </intent-filter>
-        </service> <!-- ./Firebase Notifications -->
+        <intent-filter>
+        <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+    </intent-filter>
+    </service>
+
+        <!-- ./Firebase Notifications -->
+
+        <receiver android:name=".firebase.NotificationDismissedReceiver" android:exported="false"> </receiver>
+
+
         <service
             android:name=".ActivityRecognition.ActivityIntentService"
             android:exported="false" />

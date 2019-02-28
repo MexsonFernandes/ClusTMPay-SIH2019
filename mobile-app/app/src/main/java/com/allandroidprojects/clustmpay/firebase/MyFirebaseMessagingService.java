@@ -1,17 +1,19 @@
 package com.allandroidprojects.clustmpay.firebase;
 
+import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v4.content.LocalBroadcastManager;
 import android.text.TextUtils;
 import android.util.Log;
-import android.widget.Toast;
 
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.util.Date;
 
 public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
@@ -22,8 +24,6 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
     @Override
     public void onMessageReceived(RemoteMessage remoteMessage) {
         Log.e(TAG, "From: " + remoteMessage.getFrom());
-        Log.d("tag","this is test");
-        Toast.makeText(getApplicationContext(),"This is notification check",Toast.LENGTH_LONG).show();
 
         if (remoteMessage == null)
             return;
@@ -48,7 +48,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
     }
 
     private void handleNotification(String message) {
-        if (!NotificationUtils.isAppIsInBackground(getApplicationContext())) {
+        /*if (!NotificationUtils.isAppIsInBackground(getApplicationContext())) {
             // app is in foreground, broadcast the push message
             Intent pushNotification = new Intent(Config.PUSH_NOTIFICATION);
             pushNotification.putExtra("message", message);
@@ -59,7 +59,46 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
             notificationUtils.playNotificationSound();
         }else{
             // If the app is in background, firebase itself handles the notification
-        }
+        }*/
+        PendingIntent contentPendingIntent = getContentPendingIntent( message);
+        PendingIntent cancelPendingIntent=getOnDismissedIntent(message);
+           notificationUtils = new NotificationUtils(getApplicationContext());
+        notificationUtils.showNotificationMessage( message, contentPendingIntent,cancelPendingIntent);
+
+    }
+
+
+
+    private PendingIntent getContentPendingIntent(String message) {
+        Intent resultIntent = new Intent(getApplicationContext(), Firmain.class);
+        resultIntent.putExtra("message", message);
+        resultIntent.putExtra("isFromNotification", true);
+        resultIntent.putExtra("recievingTime",getCurrentTimeStamp());
+
+        final PendingIntent resultPendingIntent =
+          PendingIntent.getActivity(
+            getApplicationContext(),
+            0,
+            resultIntent,
+            PendingIntent.FLAG_CANCEL_CURRENT
+          );
+     return  resultPendingIntent;
+    }
+
+    private PendingIntent getOnDismissedIntent(String message) {
+        Intent intent = new Intent(getApplicationContext(), NotificationDismissedReceiver.class);
+        intent.putExtra("message", message);
+        intent.putExtra("isFromNotification", true);
+        intent.putExtra("recievingTime",getCurrentTimeStamp());
+
+        PendingIntent pendingIntent =
+          PendingIntent.getBroadcast(getApplicationContext(),
+            (int) getCurrentTimeStamp(), intent, 0);
+        return pendingIntent;
+    }
+
+    private long getCurrentTimeStamp() {
+        return new Date().getTime();
     }
 
     private void handleDataMessage(JSONObject json) {

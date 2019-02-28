@@ -13,21 +13,13 @@ import android.widget.Toast;
 
 
 import com.allandroidprojects.clustmpay.R;
-import com.allandroidprojects.clustmpay.firebase.Firmain;
 import com.allandroidprojects.clustmpay.startup.MainActivity;
-import com.allandroidprojects.clustmpay.startup.WelcomeActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.FirebaseFirestoreSettings;
-
-import java.util.HashMap;
-import java.util.Map;
 
 public class Login extends AppCompatActivity {
 

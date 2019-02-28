@@ -21,6 +21,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.messaging.FirebaseMessaging;
 import com.google.firebase.database.DatabaseReference;
 
+import java.util.Date;
+
 public class Firmain extends AppCompatActivity {
 
     private static final String TAG = Firmain.class.getSimpleName();
@@ -38,7 +40,14 @@ public class Firmain extends AppCompatActivity {
         txtRegId = (TextView) findViewById(R.id.txt_reg_id);
         txtMessage = (TextView) findViewById(R.id.txt_push_message);
 
+        if(getIntent()!=null && getIntent().getBooleanExtra("isFromNotification",false)){
+           long recievingTime= getIntent().getLongExtra("recievingTime",-1);
+           if(recievingTime!=-1){
+               long clickedTime=new Date().getTime();
+               //get time diff between clicked and recievedtime
+           }
 
+        }
 // ...
         mDatabase = FirebaseDatabase.getInstance().getReference();
 
@@ -46,33 +55,32 @@ public class Firmain extends AppCompatActivity {
             @Override
             public void onReceive(Context context, Intent intent) {
 
-//                KeyguardManager myKM = (KeyguardManager) getSystemService(Context.KEYGUARD_SERVICE);
-//                if( myKM.inKeyguardRestrictedInputMode() ) {
-//                    mDatabase.child("sent_notification_activity").child(Login.email).child("phoneLocked").setValue("True");
-//
-//
-//                //locked
-//                } else {
-//                    mDatabase.child("sent_notification_activity").child(Login.email).child("phoneLocked").setValue("False");
-//                //not locked
-//                }
-//
-//                AudioManager am = (AudioManager)getSystemService(Context.AUDIO_SERVICE);
-//
-//                switch (am.getRingerMode()) {
-//                    case AudioManager.RINGER_MODE_SILENT:
-//                        mDatabase.child("sent_notification_activity").child(Login.email).child("ringerMode").setValue("Silent");
-//                        Log.v("tag","ringermode");
-//                        break;
-//                    case AudioManager.RINGER_MODE_VIBRATE:
-//                        mDatabase.child("sent_notification_activity").child(Login.email).child("ringerMode").setValue("Vibrate");
-//                        Log.v("tag","vibrate");
-//                        break;
-//                    case AudioManager.RINGER_MODE_NORMAL:
-//                        mDatabase.child("sent_notification_activity").child(Login.email).child("ringerMode").setValue("Normal");
-//                        Log.v("tag","normal");
-//                        break;
-//                }
+                KeyguardManager myKM = (KeyguardManager) getSystemService(Context.KEYGUARD_SERVICE);
+                if( myKM.inKeyguardRestrictedInputMode() ) {
+                    mDatabase.child("sent_notification_activity").child(Login.email).child("phoneLocked").setValue("True");
+
+                //locked
+                } else {
+                    mDatabase.child("sent_notification_activity").child(Login.email).child("phoneLocked").setValue("False");
+                //not locked
+                }
+
+                AudioManager am = (AudioManager)getSystemService(Context.AUDIO_SERVICE);
+
+                switch (am.getRingerMode()) {
+                    case AudioManager.RINGER_MODE_SILENT:
+                        mDatabase.child("sent_notification_activity").child(Login.email).child("ringerMode").setValue("Silent");
+                        Log.v("tag","ringermode");
+                        break;
+                    case AudioManager.RINGER_MODE_VIBRATE:
+                        mDatabase.child("sent_notification_activity").child(Login.email).child("ringerMode").setValue("Vibrate");
+                        Log.v("tag","vibrate");
+                        break;
+                    case AudioManager.RINGER_MODE_NORMAL:
+                        mDatabase.child("sent_notification_activity").child(Login.email).child("ringerMode").setValue("Normal");
+                        Log.v("tag","normal");
+                        break;
+                }
 
                 // checking for type intent filter
                 if (intent.getAction().equals(Config.REGISTRATION_COMPLETE)) {

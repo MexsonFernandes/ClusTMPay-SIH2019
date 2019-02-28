@@ -63,6 +63,7 @@ public class NotificationUtils {
                         PendingIntent.FLAG_CANCEL_CURRENT
                 );
 
+
         final NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(
                 mContext);
 
@@ -209,5 +210,27 @@ public class NotificationUtils {
             e.printStackTrace();
         }
         return 0;
+    }
+
+    public void showNotificationMessage(String message, PendingIntent contentPendingIntent, PendingIntent cancelPendingIntent) {
+        final NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(
+          mContext);
+        NotificationCompat.InboxStyle inboxStyle = new NotificationCompat.InboxStyle();
+
+        inboxStyle.addLine(message);
+
+        Notification notification;
+        notification = mBuilder.setSmallIcon(R.mipmap.ic_launcher)
+          .setAutoCancel(true)
+          .setContentTitle(mContext.getString(R.string.app_name))
+          .setContentIntent(contentPendingIntent)
+          .setDeleteIntent(cancelPendingIntent)
+          .setStyle(inboxStyle)
+          .setSmallIcon(R.mipmap.ic_launcher)
+          .setContentText(message)
+          .build();
+
+        NotificationManager notificationManager = (NotificationManager) mContext.getSystemService(Context.NOTIFICATION_SERVICE);
+        notificationManager.notify(Config.NOTIFICATION_ID, notification);
     }
 }
