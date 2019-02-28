@@ -48,6 +48,8 @@ public class Firmain extends AppCompatActivity {
                String status ="clicked";
                Long timDiff = clickedTime-recievingTime;
                boolean wasPhoneLocked= getIntent().getBooleanExtra("wasPhoneLocked",true);
+               Log.e("Htag","timDiff = "+timDiff+"wasPhoneLocked = "+wasPhoneLocked+"status = "+status);
+
            }
 
         }
