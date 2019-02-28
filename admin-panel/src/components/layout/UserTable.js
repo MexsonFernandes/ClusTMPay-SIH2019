@@ -71,6 +71,4 @@ render () {
 }
 }
 
-
-
 export default UserTable;
