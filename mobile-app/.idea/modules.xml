@@ -3,7 +3,9 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://C:\Users\Harshit\Desktop\LoveJeevan\ClusTMPay-SIH2019\mobile-app\app\app.iml" filepath="C:\Users\Harshit\Desktop\LoveJeevan\ClusTMPay-SIH2019\mobile-app\app\app.iml" />
       <module fileurl="file://$PROJECT_DIR$/mobile-app.iml" filepath="$PROJECT_DIR$/mobile-app.iml" />
+      <module fileurl="file://C:\Users\Harshit\Desktop\LoveJeevan\ClusTMPay-SIH2019\mobile-app\mobile-app.iml" filepath="C:\Users\Harshit\Desktop\LoveJeevan\ClusTMPay-SIH2019\mobile-app\mobile-app.iml" />
     </modules>
   </component>
 </project>
