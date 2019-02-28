@@ -112,7 +112,7 @@ TextView rprice;
                 if(task.isSuccessful()) {
 
                 } else {
-                    Toast.makeText(getApplicationContext(), "error", Toast.LENGTH_LONG).show();
+
                 }
             }
         });
