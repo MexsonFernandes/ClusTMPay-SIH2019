@@ -14,6 +14,7 @@ temp/
 
 mobile-app/.gradle
 mobile-app/local.properties
+mobile-app/.idea
 mobile-app/.idea/workspace.xml
 mobile-app/.idea/libraries/
 mobile-app/.DS_Store
