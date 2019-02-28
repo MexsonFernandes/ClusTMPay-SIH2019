@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="demo">
+        <item>1293</item>
+        <item>2322</item>
+        <item>9996</item>
+        <item>3145</item>
+        <item>9999</item>
+        <item>6395</item>
+        <item>6233</item>
+        <item>5615</item>
+        <item>8617</item>
+        <item>2523</item>
+        <item>1218</item>
+        <item>56900</item>
+    </string-array>
+</resources>

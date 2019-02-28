@@ -13,12 +13,21 @@ import android.widget.Toast;
 
 
 import com.allandroidprojects.clustmpay.R;
+import com.allandroidprojects.clustmpay.firebase.Firmain;
 import com.allandroidprojects.clustmpay.startup.MainActivity;
 import com.allandroidprojects.clustmpay.startup.WelcomeActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreSettings;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class Login extends AppCompatActivity {
 
@@ -26,7 +35,9 @@ public class Login extends AppCompatActivity {
     private FirebaseAuth auth;
     private ProgressBar progressBar;
     private Button  btnLogin;
+    private DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
 
+    public static String email;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +47,8 @@ public class Login extends AppCompatActivity {
         auth = FirebaseAuth.getInstance();
 
         if (auth.getCurrentUser() != null) {
-            startActivity(new Intent(Login.this, Login.class));
+            this.email = auth.getCurrentUser().getEmail().toString();
+            startActivity(new Intent(Login.this, MainActivity.class));
             finish();
         }
 
@@ -54,7 +66,7 @@ public class Login extends AppCompatActivity {
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String email = inputEmail.getText().toString();
+                final String email = inputEmail.getText().toString();
                 final String password = inputPassword.getText().toString();
 
                 if (TextUtils.isEmpty(email)) {
@@ -86,7 +98,10 @@ public class Login extends AppCompatActivity {
                                         Toast.makeText(Login.this, getString(R.string.auth_failed), Toast.LENGTH_LONG).show();
                                     }
                                 } else {
-                                    Intent intent = new Intent(Login.this, Login.class);
+                                    Login.email = email;
+
+
+                                    Intent intent = new Intent(Login.this, MainActivity.class);
                                     startActivity(intent);
                                     finish();
                                 }

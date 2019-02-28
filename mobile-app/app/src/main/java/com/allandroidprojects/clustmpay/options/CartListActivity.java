@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.allandroidprojects.clustmpay.R;
 import com.allandroidprojects.clustmpay.product.ItemDetailsActivity;
@@ -20,17 +21,29 @@ import com.allandroidprojects.clustmpay.utility.ImageUrlUtils;
 import com.facebook.drawee.view.SimpleDraweeView;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 import static com.allandroidprojects.clustmpay.fragments.ImageListFragment.STRING_IMAGE_POSITION;
 import static com.allandroidprojects.clustmpay.fragments.ImageListFragment.STRING_IMAGE_URI;
 
 public class CartListActivity extends AppCompatActivity {
     private static Context mContext;
+    TextView rprice;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cart_list);
         mContext = CartListActivity.this;
+
+
+
+//        String[] array = getResources().getStringArray(R.array.demo);
+//        String randomstr = array[new Random().nextInt(array.length)];
+//
+//
+//        rprice=(TextView)findViewById(R.id.rate1);
+//        rprice.setText(randomstr);
+
 
         ImageUrlUtils imageUrlUtils = new ImageUrlUtils();
         ArrayList<String> cartlistImageUri =imageUrlUtils.getCartListImageUri();
@@ -55,6 +68,7 @@ public class CartListActivity extends AppCompatActivity {
             public final SimpleDraweeView mImageView;
             public final LinearLayout mLayoutItem, mLayoutRemove , mLayoutEdit;
 
+
             public ViewHolder(View view) {
                 super(view);
                 mView = view;
@@ -62,6 +76,7 @@ public class CartListActivity extends AppCompatActivity {
                 mLayoutItem = (LinearLayout) view.findViewById(R.id.layout_item_desc);
                 mLayoutRemove = (LinearLayout) view.findViewById(R.id.layout_action1);
                 mLayoutEdit = (LinearLayout) view.findViewById(R.id.layout_action2);
+
             }
         }
 

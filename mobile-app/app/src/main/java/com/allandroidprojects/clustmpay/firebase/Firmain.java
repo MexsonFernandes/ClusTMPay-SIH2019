@@ -1,10 +1,12 @@
 package com.allandroidprojects.clustmpay.firebase;
 
+import android.app.KeyguardManager;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
+import android.media.AudioManager;
 import android.os.Bundle;
 import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.AppCompatActivity;
@@ -14,14 +16,19 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.allandroidprojects.clustmpay.R;
+import com.allandroidprojects.clustmpay.login.Login;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.messaging.FirebaseMessaging;
-import com.pusher.pushnotifications.PushNotifications;
+import com.google.firebase.database.DatabaseReference;
 
 public class Firmain extends AppCompatActivity {
 
     private static final String TAG = Firmain.class.getSimpleName();
     private BroadcastReceiver mRegistrationBroadcastReceiver;
     private TextView txtRegId, txtMessage;
+    public  String regId;
+
+    private DatabaseReference mDatabase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,9 +39,39 @@ public class Firmain extends AppCompatActivity {
         txtMessage = (TextView) findViewById(R.id.txt_push_message);
 
 
+// ...
+        mDatabase = FirebaseDatabase.getInstance().getReference();
+
         mRegistrationBroadcastReceiver = new BroadcastReceiver() {
             @Override
             public void onReceive(Context context, Intent intent) {
+
+                KeyguardManager myKM = (KeyguardManager) getSystemService(Context.KEYGUARD_SERVICE);
+                if( myKM.inKeyguardRestrictedInputMode() ) {
+                    mDatabase.child("sent_notification_activity").child(Login.email).child("phoneLocked").setValue("True");
+
+                //locked
+                } else {
+                    mDatabase.child("sent_notification_activity").child(Login.email).child("phoneLocked").setValue("False");
+                //not locked
+                }
+
+                AudioManager am = (AudioManager)getSystemService(Context.AUDIO_SERVICE);
+
+                switch (am.getRingerMode()) {
+                    case AudioManager.RINGER_MODE_SILENT:
+                        mDatabase.child("sent_notification_activity").child(Login.email).child("ringerMode").setValue("Silent");
+                        Log.v("tag","ringermode");
+                        break;
+                    case AudioManager.RINGER_MODE_VIBRATE:
+                        mDatabase.child("sent_notification_activity").child(Login.email).child("ringerMode").setValue("Vibrate");
+                        Log.v("tag","vibrate");
+                        break;
+                    case AudioManager.RINGER_MODE_NORMAL:
+                        mDatabase.child("sent_notification_activity").child(Login.email).child("ringerMode").setValue("Normal");
+                        Log.v("tag","normal");
+                        break;
+                }
 
                 // checking for type intent filter
                 if (intent.getAction().equals(Config.REGISTRATION_COMPLETE)) {
@@ -43,6 +80,7 @@ public class Firmain extends AppCompatActivity {
                     FirebaseMessaging.getInstance().subscribeToTopic(Config.TOPIC_GLOBAL);
 
                     displayFirebaseRegId();
+
 
                 } else if (intent.getAction().equals(Config.PUSH_NOTIFICATION)) {
                     // new push notification is received
@@ -63,12 +101,12 @@ public class Firmain extends AppCompatActivity {
     // and displays on the screen
     private void displayFirebaseRegId() {
         SharedPreferences pref = getApplicationContext().getSharedPreferences(Config.SHARED_PREF, 0);
-        String regId = pref.getString("regId", null);
+        this.regId = pref.getString("regId", null);
 
         Log.e(TAG, "Firebase reg id: " + regId);
 
-        if (!TextUtils.isEmpty(regId))
-            txtRegId.setText("Firebase Reg Id: " + regId);
+        if (!TextUtils.isEmpty(this.regId))
+            txtRegId.setText("Firebase Reg Id: " + this.regId);
         else
             txtRegId.setText("Firebase Reg Id is not received yet!");
     }

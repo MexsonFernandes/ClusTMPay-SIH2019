@@ -27,6 +27,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.allandroidprojects.clustmpay.R;
@@ -35,6 +36,8 @@ import com.allandroidprojects.clustmpay.startup.MainActivity;
 import com.allandroidprojects.clustmpay.utility.ImageUrlUtils;
 import com.facebook.drawee.view.SimpleDraweeView;
 
+import java.util.Random;
+
 
 public class ImageListFragment extends Fragment {
 
@@ -42,10 +45,14 @@ public class ImageListFragment extends Fragment {
     public static final String STRING_IMAGE_POSITION = "ImagePosition";
     private static MainActivity mActivity;
 
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mActivity = (MainActivity) getActivity();
+
+
+
     }
 
     @Override
@@ -54,6 +61,7 @@ public class ImageListFragment extends Fragment {
         setupRecyclerView(rv);
         return rv;
     }
+
 
     private void setupRecyclerView(RecyclerView recyclerView) {
       /*  if (ImageListFragment.this.getArguments().getInt("type") == 1) {
@@ -69,6 +77,7 @@ public class ImageListFragment extends Fragment {
         String[] items=null;
         if (ImageListFragment.this.getArguments().getInt("type") == 1){
             items =ImageUrlUtils.getOffersUrls();
+
         }else if (ImageListFragment.this.getArguments().getInt("type") == 2){
             items =ImageUrlUtils.getElectronicsUrls();
         }else if (ImageListFragment.this.getArguments().getInt("type") == 3){
@@ -97,33 +106,43 @@ public class ImageListFragment extends Fragment {
             public final LinearLayout mLayoutItem;
             public final ImageView mImageViewWishlist;
 
+
             public ViewHolder(View view) {
                 super(view);
                 mView = view;
                 mImageView = (SimpleDraweeView) view.findViewById(R.id.image1);
                 mLayoutItem = (LinearLayout) view.findViewById(R.id.layout_item);
                 mImageViewWishlist = (ImageView) view.findViewById(R.id.ic_wishlist);
+
+
+
             }
         }
 
         public SimpleStringRecyclerViewAdapter(RecyclerView recyclerView, String[] items) {
             mValues = items;
             mRecyclerView = recyclerView;
+
         }
 
         @Override
         public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
             View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item, parent, false);
+
             return new ViewHolder(view);
+
+
         }
 
         @Override
         public void onViewRecycled(ViewHolder holder) {
+
             if (holder.mImageView.getController() != null) {
                 holder.mImageView.getController().onDetach();
             }
             if (holder.mImageView.getTopLevelDrawable() != null) {
                 holder.mImageView.getTopLevelDrawable().setCallback(null);
+
 //                ((BitmapDrawable) holder.mImageView.getTopLevelDrawable()).getBitmap().recycle();
             }
         }
@@ -138,6 +157,7 @@ public class ImageListFragment extends Fragment {
             } else {
                 layoutParams.height = 800;
             }*/
+
             final Uri uri = Uri.parse(mValues[position]);
             holder.mImageView.setImageURI(uri);
             holder.mLayoutItem.setOnClickListener(new View.OnClickListener() {
@@ -147,6 +167,7 @@ public class ImageListFragment extends Fragment {
                     intent.putExtra(STRING_IMAGE_URI, mValues[position]);
                     intent.putExtra(STRING_IMAGE_POSITION, position);
                     mActivity.startActivity(intent);
+
 
                 }
             });
@@ -160,6 +181,7 @@ public class ImageListFragment extends Fragment {
                     holder.mImageViewWishlist.setImageResource(R.drawable.ic_favorite_black_18dp);
                     notifyDataSetChanged();
                     Toast.makeText(mActivity,"Item added to wishlist.",Toast.LENGTH_SHORT).show();
+
 
                 }
             });

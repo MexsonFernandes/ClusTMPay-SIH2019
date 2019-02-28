@@ -19,6 +19,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.allandroidprojects.clustmpay.R;
+import com.allandroidprojects.clustmpay.login.Login;
 import com.allandroidprojects.clustmpay.utility.PrefManager;
 
 public class WelcomeActivity extends AppCompatActivity {
@@ -49,10 +50,13 @@ public class WelcomeActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_welcome);
 
+
+
         viewPager = (ViewPager) findViewById(R.id.view_pager);
         dotsLayout = (LinearLayout) findViewById(R.id.layoutDots);
         btnSkip = (Button) findViewById(R.id.btn_skip);
         btnNext = (Button) findViewById(R.id.btn_next);
+
 
 
         // layouts of all welcome sliders
@@ -121,7 +125,7 @@ public class WelcomeActivity extends AppCompatActivity {
 
     private void launchHomeScreen() {
         prefManager.setFirstTimeLaunch(false);
-        startActivity(new Intent(WelcomeActivity.this, MainActivity.class));
+        startActivity(new Intent(WelcomeActivity.this, Login.class));
         finish();
     }
 
