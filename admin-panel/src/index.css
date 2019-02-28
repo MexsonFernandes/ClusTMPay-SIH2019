@@ -9,8 +9,6 @@ body{
   background-color: #EDEDEE;
 }
 
-
-
 a{
   color: inherit;
 }
@@ -213,6 +211,3 @@ main {
     flex-direction: column;
   }
 }
-
-
-
