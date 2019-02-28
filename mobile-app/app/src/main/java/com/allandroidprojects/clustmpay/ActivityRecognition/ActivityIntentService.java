@@ -10,6 +10,8 @@ import android.content.Intent;
 import android.app.IntentService;
 import android.preference.PreferenceManager;
 import android.content.res.Resources;
+import android.widget.Toast;
+
 import com.google.gson.reflect.TypeToken;
 import com.google.android.gms.location.ActivityRecognitionResult;
 import com.google.android.gms.location.DetectedActivity;
@@ -45,6 +47,8 @@ public class ActivityIntentService extends IntentService {
 
         }
     }
+
+
 //Convert the code for the detected activity type, into the corresponding string//
 
     static String getActivityString(Context context, int detectedActivityType) {

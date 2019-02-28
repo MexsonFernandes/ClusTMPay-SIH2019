@@ -1,7 +1,9 @@
 package com.allandroidprojects.clustmpay.startup;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -12,23 +14,37 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.allandroidprojects.clustmpay.ActivityRecognition.RecognitionActivity;
 import com.allandroidprojects.clustmpay.R;
+import com.allandroidprojects.clustmpay.firebase.Config;
+import com.allandroidprojects.clustmpay.firebase.Firmain;
 import com.allandroidprojects.clustmpay.fragments.ImageListFragment;
+import com.allandroidprojects.clustmpay.login.Login;
 import com.allandroidprojects.clustmpay.miscellaneous.EmptyActivity;
 import com.allandroidprojects.clustmpay.notification.NotificationCountSetClass;
 import com.allandroidprojects.clustmpay.options.CartListActivity;
 import com.allandroidprojects.clustmpay.options.SearchResultActivity;
 import com.allandroidprojects.clustmpay.options.WishlistActivity;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.pusher.client.PusherOptions;
 import com.pusher.pushnotifications.PushNotifications;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
-import com.pusher.client.Pusher;
-import com.pusher.client.channel.Channel;
-import com.pusher.client.channel.SubscriptionEventListener;
+import java.util.Map;
+import java.util.Random;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -36,28 +52,26 @@ public class MainActivity extends AppCompatActivity
     public static int notificationCountCart = 0;
     static ViewPager viewPager;
     static TabLayout tabLayout;
+TextView rprice;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+//
+//        rprice=(TextView)findViewById(R.id.rate1);
+//        rprice.setText("vghgvh");
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        PusherOptions options = new PusherOptions();
-        options.setCluster("ap2");
-        Pusher pusher = new Pusher("b02510db19f92944ca1a", options);
+//
+//        String[] array = getResources().getStringArray(R.array.demo);
+//        String randomstr = array[new Random().nextInt(array.length)];
+//
 
-        Channel channel = pusher.subscribe("clustmpay_android");
 
-        channel.bind("my-event", new SubscriptionEventListener() {
-            @Override
-            public void onEvent(String channelName, String eventName, final String data) {
-                System.out.println(data);
-            }
-        });
 
-        pusher.connect();
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -75,6 +89,34 @@ public class MainActivity extends AppCompatActivity
             setupViewPager(viewPager);
             tabLayout.setupWithViewPager(viewPager);
         }
+
+        View header = navigationView.getHeaderView(0);
+        TextView email = header.findViewById(R.id.email);
+        email.setText(Login.email);
+
+
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+
+
+
+        Map<String,Object> data = new HashMap<>();
+        SharedPreferences pref = getApplicationContext().getSharedPreferences(Config.SHARED_PREF, 0);
+        String regid = pref.getString("regId", null);
+        data.put("device-id", regid);
+
+        DocumentReference newUser = db.collection("users").document(Login.email);
+
+        newUser.set(data).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if(task.isSuccessful()) {
+
+                } else {
+                    Toast.makeText(getApplicationContext(), "error", Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+
 
 
       /*  FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
@@ -204,8 +246,17 @@ public class MainActivity extends AppCompatActivity
             viewPager.setCurrentItem(5);
         }else if (id == R.id.my_wishlist) {
             startActivity(new Intent(MainActivity.this, WishlistActivity.class));
-        }else if (id == R.id.my_cart) {
+        }else if (id == R.id.my_cart)
+        {
             startActivity(new Intent(MainActivity.this, CartListActivity.class));
+        }
+        else if (id == R.id.logout) {
+            FirebaseAuth.getInstance().signOut();
+           startActivity(new Intent(MainActivity.this, Login.class));
+
+        }
+        else if (id == R.id.trackactivity) {
+            startActivity(new Intent(MainActivity.this, RecognitionActivity.class));
         }else {
             startActivity(new Intent(MainActivity.this, EmptyActivity.class));
         }

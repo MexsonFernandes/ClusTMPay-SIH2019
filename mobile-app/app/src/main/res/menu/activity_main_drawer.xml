@@ -39,17 +39,20 @@
                 android:icon="@drawable/ic_shopping_cart_black_24dp"
                 android:title="@string/my_cart" />
             <item
-                android:id="@+id/my_wishlist"
-                android:icon="@drawable/ic_favorite_black_24dp"
-                android:title="@string/my_wishlist" />
+            android:id="@+id/my_wishlist"
+            android:icon="@drawable/ic_favorite_black_24dp"
+            android:title="@string/my_wishlist" />
+
             <item
-                android:id="@+id/my_rewards"
-                android:icon="@drawable/ic_card_giftcard_black_24dp"
-                android:title="@string/my_rewards" />
+                android:id="@+id/trackactivity"
+                android:icon="@drawable/ic_track"
+                android:title="Track Activity" />
+
             <item
-                android:id="@+id/my_account"
-                android:icon="@drawable/ic_person_black_24dp"
-                android:title="@string/my_account" />
+                android:id="@+id/logout"
+                android:icon="@drawable/ic_account_circle_black_48dp"
+                android:title="Log out" />
+
         </menu>
     </item>
 

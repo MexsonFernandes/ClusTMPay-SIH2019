@@ -1,10 +1,11 @@
 package com.allandroidprojects.clustmpay.utility;
 
-import java.util.ArrayList;
+import com.allandroidprojects.clustmpay.R;
 
-/**
- * Created by 06peng on 2015/6/24.
- */
+import java.util.ArrayList;
+import java.util.Random;
+
+
 public class ImageUrlUtils {
     static ArrayList<String> wishlistImageUri = new ArrayList<>();
     static ArrayList<String> cartListImageUri = new ArrayList<>();
@@ -123,6 +124,7 @@ public class ImageUrlUtils {
 
     public static String[] getOffersUrls() {
         String[] urls = new String[]{
+
                 "https://static.pexels.com/photos/1543/landscape-nature-man-person-medium.jpg",
                 "https://static.pexels.com/photos/211048/pexels-photo-211048-medium.jpeg",
                 "https://static.pexels.com/photos/1778/numbers-time-watch-white-medium.jpg",
@@ -186,6 +188,7 @@ public class ImageUrlUtils {
     }
 
     public static String[] getLifeStyleUrls() {
+
         String[] urls = new String[]{
                 "https://static.pexels.com/photos/169047/pexels-photo-169047-medium.jpeg",
                 "https://static.pexels.com/photos/160826/girl-dress-bounce-nature-160826-medium.jpeg",
@@ -228,6 +231,12 @@ public class ImageUrlUtils {
         };
         return urls;
     }
+
+
+
+
+
+
 
     // Methods for Wishlist
     public void addWishlistImageUri(String wishlistImageUri) {

@@ -54,9 +54,11 @@
                       android:layout_height="wrap_content"
                       android:text="Item descriptions"
                       android:textSize="10dp"/>
-            <TextView android:layout_width="wrap_content"
+            <TextView
+                android:id="@+id/rate1"
+                android:layout_width="wrap_content"
                       android:layout_height="wrap_content"
-                      android:text="Rs. 8,999"
+                      android:text="Rs. 9,999"
                       android:textSize="12dp"
                       android:textColor="#4CAF50"/>
         </LinearLayout>

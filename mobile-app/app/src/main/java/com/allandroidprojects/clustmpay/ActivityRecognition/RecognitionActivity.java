@@ -52,10 +52,21 @@ public class RecognitionActivity extends AppCompatActivity
     }
     @Override
     protected void onPause() {
+        super.onPause();
         PreferenceManager.getDefaultSharedPreferences(this)
                 .unregisterOnSharedPreferenceChangeListener(this);
-        super.onPause();
+        updateDetectedActivitiesList();
+
     }
+    @Override
+    protected void onStop() {
+        super.onStop();
+        PreferenceManager.getDefaultSharedPreferences(this)
+                .unregisterOnSharedPreferenceChangeListener(this);
+        updateDetectedActivitiesList();
+
+    }
+
     public void requestUpdatesHandler(View view) {
 //Set the activity detection interval. I’m using 3 seconds//
         Task<Void> task = mActivityRecognitionClient.requestActivityUpdates(
