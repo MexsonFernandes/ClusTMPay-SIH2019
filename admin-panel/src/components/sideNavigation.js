@@ -28,12 +28,19 @@ const TopNavigation = () => {
                         Notifications  
                     </MDBListGroupItem>
                 </NavLink>
+                <NavLink to="/userbehaviour" activeClassName="activeClass">
+                    <MDBListGroupItem>
+                        <MDBIcon icon="user" className="mr-3"/>
+                        User Behaviour
+                    </MDBListGroupItem>
+                </NavLink>
                 <NavLink to="/404" activeClassName="activeClass">
                     <MDBListGroupItem>
                         <MDBIcon icon="user" className="mr-3"/>
                         Live Activity 
                     </MDBListGroupItem>
                 </NavLink>
+               
             </MDBListGroup>
         </div>
     );
