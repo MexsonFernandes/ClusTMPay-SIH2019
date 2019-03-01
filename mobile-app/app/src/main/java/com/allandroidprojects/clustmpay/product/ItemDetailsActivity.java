@@ -15,7 +15,7 @@ import com.allandroidprojects.clustmpay.options.CartListActivity;
 import com.allandroidprojects.clustmpay.startup.MainActivity;
 import com.allandroidprojects.clustmpay.utility.ImageUrlUtils;
 import com.facebook.drawee.view.SimpleDraweeView;
-import com.pusher.pushnotifications.PushNotifications;
+
 
 public class ItemDetailsActivity extends AppCompatActivity {
     int imagePosition;

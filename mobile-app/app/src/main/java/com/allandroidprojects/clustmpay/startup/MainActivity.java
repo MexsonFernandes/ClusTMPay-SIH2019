@@ -14,18 +14,15 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.CardView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.allandroidprojects.clustmpay.ActivityRecognition.RecognitionActivity;
 import com.allandroidprojects.clustmpay.R;
 import com.allandroidprojects.clustmpay.firebase.Config;
-import com.allandroidprojects.clustmpay.firebase.Firmain;
 import com.allandroidprojects.clustmpay.fragments.ImageListFragment;
 import com.allandroidprojects.clustmpay.login.Login;
 import com.allandroidprojects.clustmpay.miscellaneous.EmptyActivity;
@@ -38,13 +35,11 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.pusher.client.PusherOptions;
-import com.pusher.pushnotifications.PushNotifications;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Random;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
