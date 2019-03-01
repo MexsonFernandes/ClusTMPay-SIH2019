@@ -4,6 +4,11 @@ from configurations.settings import database, auth, db
 from pyfcm import FCMNotification
 from .models import User
 
+push_service = FCMNotification(
+                    api_key="AAAAuIvKSI0:APA91bFZ-eAVlKwN5R3txdjBiBSs3m6QB4pVEGo6CtFXEDJCfFR2pm7X_almIUiTPUrUdQ2lkGSN3FO04h1SC4I985Jcp4yP1-mNM77OSiFYq9TKd4dBJ57Wg7e3UMbciHqH_XX-NdWp"
+                )        
+
+
 def home(request):
     return redirect('/backend')
 
@@ -24,7 +29,6 @@ def save_users(request):
 
 def send_note_all(request):
     try:
-        push_service = FCMNotification(api_key="AAAAuIvKSI0:APA91bFZ-eAVlKwN5R3txdjBiBSs3m6QB4pVEGo6CtFXEDJCfFR2pm7X_almIUiTPUrUdQ2lkGSN3FO04h1SC4I985Jcp4yP1-mNM77OSiFYq9TKd4dBJ57Wg7e3UMbciHqH_XX-NdWp") 
         registration_ids = []
         user = User.objects.all()
         emails = ""
@@ -34,10 +38,25 @@ def send_note_all(request):
         message_title = "New service launch"
         message_body = "ClusTMPay has been promoted all over the world"
         result = push_service.notify_multiple_devices(registration_ids=registration_ids, message_title=message_title, message_body=message_body)
+        print(result)
         return HttpResponse(emails + "Success: sent notification to " + str(len(user)) + " devices")
     except Exception as e:
         return HttpResponse("Error: " + str(e))
 
+
+
+def send_note(request):
+    try:
+        email = request.GET.get('email');
+        message_title = "New service launch"
+        message_body = "ClusTMPay has been promoted all over the world"
+        registration_id = User.objects.filter(email=email).only('device_id')
+        registration_id = [i.device_id for i in registration_id]
+        result = push_service.notify_single_device(registration_id=registration_id[0], message_title=message_title, message_body=message_body)
+        print(result['results'][0]['message_id'])
+        return HttpResponse("done " + str(email))
+    except Exception as e:
+        return HttpResponse("Error: " + str(e))
 
 
 # create data in firebase - results = database.child("users").push(data)
