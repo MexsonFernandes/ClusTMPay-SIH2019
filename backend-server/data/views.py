@@ -3,6 +3,7 @@ from django.shortcuts import HttpResponse
 from configurations.settings import database, auth, db
 from pyfcm import FCMNotification
 from .models import User
+from data.tasks import send_notification
 
 push_service = FCMNotification(
                     api_key="AAAAuIvKSI0:APA91bFZ-eAVlKwN5R3txdjBiBSs3m6QB4pVEGo6CtFXEDJCfFR2pm7X_almIUiTPUrUdQ2lkGSN3FO04h1SC4I985Jcp4yP1-mNM77OSiFYq9TKd4dBJ57Wg7e3UMbciHqH_XX-NdWp"
@@ -10,6 +11,7 @@ push_service = FCMNotification(
 
 
 def home(request):
+    send_notification.delay()
     return redirect('/backend')
 
 
