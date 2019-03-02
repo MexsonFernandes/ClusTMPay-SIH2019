@@ -4,6 +4,7 @@ import DashboardPage from './pages/DashboardPage';
 import NotFoundPage from './pages/NotFoundPage';
 import UserPage from './pages/User';
 import NotificationPage from './pages/NotificationPage';
+import UserBehaviour from './pages/UserBehaviour';
 
 class Routes extends React.Component {
   render() {
@@ -14,6 +15,7 @@ class Routes extends React.Component {
         <Route path='/user' component={UserPage}/>
         <Route path='/404' component={NotFoundPage} />
         <Route path='/notifications' component={NotificationPage}/>
+        <Route path = '/userbehaviour' component ={UserBehaviour}/>
       </Switch>
     )
   }

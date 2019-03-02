@@ -53,10 +53,10 @@ class NotificationPage extends Component{
 
 export default NotificationPage;
 
-// const NotificationPage =  () => {
-//   return (
-   
-  
-// )}
+	// const NotificationPage =  () => {
+	//   return (
+		
+		
+	// )}
 
-// export default NotificationPage;
+	// export default NotificationPage;
