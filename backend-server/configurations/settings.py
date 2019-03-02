@@ -60,7 +60,7 @@ SECRET_KEY = 'v%^q7%_uf+k9@_6zh=z1-0&4%9vagw&yn$m_lad=&yb3(m7o)x'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -101,15 +101,15 @@ MIDDLEWARE = [
 ROOT_URLCONF = 'configurations.urls'
 
 REDIS_HOST = 'localhost'
-REDIS_PORT = '6379'
+REDIS_PORT = '8001'
 BROKER_URL = 'redis://' + REDIS_HOST + ':' + REDIS_PORT + '/0'
 BROKER_TRANSPORT_OPTIONS = {'visibility_timeout': 3600} 
 CELERY_RESULT_BACKEND = 'redis://' + REDIS_HOST + ':' + REDIS_PORT + '/0'
 
 
 from celery.schedules import crontab
-CELERY_BROKER_URL = 'redis://localhost:6379'
-CELERY_RESULT_BACKEND = 'redis://localhost:6379'
+CELERY_BROKER_URL = 'redis://localhost:8001'
+CELERY_RESULT_BACKEND = 'redis://localhost:8001'
 CELERY_ACCEPT_CONTENT = ['application/json']
 CELERY_RESULT_SERIALIZER = 'json'
 CELERY_TASK_SERIALIZER = 'json'
@@ -147,8 +147,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'clustmpay',
-        'USER': 'postgres',
-        'PASSWORD': 'postgres',
+        'USER': 'robomx',
+        'PASSWORD': 'robomx',
         'HOST': 'localhost',
         'PORT': '5432',
     }
@@ -204,11 +204,8 @@ REST_FRAMEWORK = {
 }
 
 
-CORS_ORIGIN_ALLOW_ALL = False
+CORS_ORIGIN_ALLOW_ALL = True
 
-CORS_ORIGIN_WHITELIST = (
-       'localhost:3000',
-)
 
 
 
