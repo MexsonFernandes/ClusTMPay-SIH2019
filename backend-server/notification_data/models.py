@@ -1,10 +1,10 @@
 from django.db import models
-from data.models import Products
+# from data.models import Products
 # Create your models here.
 
 class Sent_Notification(models.Model):
     sent_time = models.DateTimeField()
-    product = models.ForeignKey(Products, on_delete=models.SET_NULL, null=True)
+    #product = models.ForeignKey(Products, on_delete=models.SET_NULL, null=True)
     title = models.CharField(max_length=500)
     body = models.CharField(max_length=1000)
     image = models.CharField(max_length=500)

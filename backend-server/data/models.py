@@ -12,3 +12,7 @@ class Products(models.Model):
     price = models.FloatField()
     category = models.CharField(max_length=300)
     
+
+class GeoLocation(models.Model):
+    lat = models.CharField(max_length=100)
+    long = models.CharField(max_length=100)
