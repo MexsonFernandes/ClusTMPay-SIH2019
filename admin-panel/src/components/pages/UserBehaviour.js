@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import CanvasJSReact from '../canvasjs.react';
 var CanvasJSChart = CanvasJSReact.CanvasJSChart;
-    var CanvasJS = CanvasJSReact.CanvasJS;
+ //   var CanvasJS = CanvasJSReact.CanvasJS;
 class UserBehaviour extends Component{
     render()
     {

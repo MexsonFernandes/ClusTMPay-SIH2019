@@ -12,6 +12,7 @@ app.initializeApp(config);
 // var db_firebase = app.database();
 const db_firestore = app.firestore();
 
+
 class UserTable extends Component {
 constructor(props){
     super(props);
@@ -21,13 +22,17 @@ constructor(props){
     };
 }
 
+
+
 componentDidMount() {
   const userRef = db_firestore.collection('users');
   userRef.get()
   .then(users => {
     let newData = [];
-    // eslint-disable-next-line
-    users.docs.map((user, index) => {
+    
+
+    users.docs.map((user, index ) => {
+      console.log(user);
       newData.push({
         id: index+1, 
         email:user.id,
@@ -38,7 +43,7 @@ componentDidMount() {
       });
     })
   .catch(error => {
-    alert("check your network connection!!!")
+    alert("check your network connection!!!" + error)
     console.log(error);
   });
 }
@@ -58,10 +63,13 @@ render () {
         
           {this.state.users.map((user) => {
               return (
+
+                
+
                 <tr>
-                  <td>{user.id}</td>
-                  <td>{user.email}</td>
-                  <td>{user.device}</td>
+                  <td>{ user.id }</td>
+                  <td>{ user.email }</td>
+                  <td>{ user.device }</td>
                 </tr>
               )
           })}

@@ -5,10 +5,13 @@
   "author": "SIH 2019",
   "license": "",
   "dependencies": {
+    "axios": "^0.18.0",
     "canvas-js": "^4.0.0",
     "canvasjs": "^1.8.1",
+    "cors": "^2.8.5",
     "firebase": "^5.8.4",
     "google-map-react": "^1.0.6",
+    "google-maps-react": "^2.0.2",
     "mdbreact": "^4.9.0",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
