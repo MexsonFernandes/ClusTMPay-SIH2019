@@ -43,6 +43,12 @@ FCM_DJANGO_SETTINGS = {
 
 
 
+CORS_ORIGIN_ALLOW_ALL = True
+
+CORS_ALLOW_METHOD = (
+    'GET',
+    'POST',
+)
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -66,29 +72,32 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 DEFAULT_APPS = (
+    'corsheaders',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_cassandra_engine',
 )
 
 EXTERNAL_APPS = (
     'rest_framework',
-    'corsheaders',
+    
 )
 
 LOCAL_APPS = (
-    'user_behaviour_data',
-    'notification_data',
     'machine_learning_model',
     'data',
 )
 
 INSTALLED_APPS = DEFAULT_APPS + EXTERNAL_APPS + LOCAL_APPS
 
+
+
 MIDDLEWARE = [
+     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -106,7 +115,7 @@ BROKER_URL = 'redis://' + REDIS_HOST + ':' + REDIS_PORT + '/0'
 BROKER_TRANSPORT_OPTIONS = {'visibility_timeout': 3600} 
 CELERY_RESULT_BACKEND = 'redis://' + REDIS_HOST + ':' + REDIS_PORT + '/0'
 
-
+from datetime import timedelta
 from celery.schedules import crontab
 CELERY_BROKER_URL = 'redis://localhost:8001'
 CELERY_RESULT_BACKEND = 'redis://localhost:8001'
@@ -117,7 +126,7 @@ CELERY_TIMEZONE = 'Asia/Makassar'
 CELERY_BEAT_SCHEDULE = {
 'send-notification': {
 'task': 'data.tasks.send_notification',
-'schedule': crontab(minute='*/1'),
+'schedule': timedelta(seconds=5),#crontab(minute='*/1'),
 },
 }
 
@@ -151,8 +160,22 @@ DATABASES = {
         'PASSWORD': 'robomx',
         'HOST': 'localhost',
         'PORT': '5432',
+    },
+    'big_data': {
+        'ENGINE': 'django_cassandra_engine',
+            'NAME': 'clustmpay',  # your database name
+            'TEST_NAME': 'clustmpay_test',
+            'HOST': 'localhost', # your database ip. eg.'127.0.0.1'
+            'OPTIONS': {
+                'replication': {
+                    'strategy_class': 'SimpleStrategy',
+                    'replication_factor': 1
+                }
+            }
     }
 }
+
+
 
 # Password validation
 # https://docs.djangoproject.com/en/2.1/ref/settings/#auth-password-validators
@@ -191,22 +214,19 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATIC_URL = '/static/'
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "static"),
+]
 
-REST_FRAMEWORK = {
-    'DEFAULT_PERMISSION_CLASSES': (
-        'rest_framework.permissions.IsAuthenticated',
-    ),
-    'DEFAULT_AUTHENTICATION_CLASSES': (
-        'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
-        'rest_framework.authentication.SessionAuthentication',
-        'rest_framework.authentication.BasicAuthentication',
-    ),
-}
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 
-CORS_ORIGIN_ALLOW_ALL = True
-
-
-
+##EMAIL DETAILS STARTS
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'testmyserverwebsite@gmail.com'
+EMAIL_HOST_PASSWORD = 'elisa-Project@11'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
 
 
