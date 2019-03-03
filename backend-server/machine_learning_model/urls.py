@@ -7,5 +7,6 @@ urlpatterns = [
     path('train', views.train),
     path('context', views.context),
     path('recommendation', views.recommendation),
-    path('notification', views.notification)
+    path('notification', views.notification),
+    path('notification_email', views.notification_email)
 ]   

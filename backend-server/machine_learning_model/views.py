@@ -52,9 +52,14 @@ def send_email(subject, mail_message, to,):
     send_email.content_subtype='html'
     send_email.send()
 
+
+def notification_email(request):
+    email = request.GET.get('email')
+    send_email("ClusTMPay recommends following productt!!!", "<h4>Check out your intentful products.</h4><img src='https://static.pexels.com/photos/133919/pexels-photo-133919-medium.jpeg' width='100px' height='150px'/>", email)
+    return HttpResponse("done")
+
+
 def notification(request):
     email = request.GET.get('email')
-    os.system("curl -b csrftoken=sometoken http://127.0.0.1:8000/api/data/send_note?email=" + str(email))
-
-    send_email("ClusTMPay recommends following productt!!!", "<h4>Check out your intentful products.</h4><img src='https://static.pexels.com/photos/133919/pexels-photo-133919-medium.jpeg' width='100px' height='150px'/>", email)
+    data = os.system("curl -b csrftoken=sometoken http://127.0.0.1:8000/api/data/send_note?email=" + str(email))
     return HttpResponse("done")
