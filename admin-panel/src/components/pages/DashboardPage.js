@@ -14,7 +14,9 @@ class DashboardPage extends Component {
 			exportEnabled: true,
 			theme: "light2", //"light1", "dark1", "dark2"
 			title:{
-				text: "Simple Column Chart with Index Labels"
+				text: "Minutes vs Clicks frequency [ average users ]	"
+				
+				
 			},
 			data: [{
 				type: "column", //change type to bar, line, area, pie, etc
@@ -22,8 +24,8 @@ class DashboardPage extends Component {
 				indexLabelFontColor: "#5A5757",
 				indexLabelPlacement: "outside",
 				dataPoints: [
-					{ x: 10, y: 71 },
-					{ x: 20, y: 55 },
+					{ x: 10, y: 10 },
+					{ x: 20, y: 20 },
 					{ x: 30, y: 50 },
 					{ x: 40, y: 65 },
 					{ x: 50, y: 71 },

@@ -3,64 +3,112 @@ import CanvasJSReact from '../canvasjs.react';
 var CanvasJSChart = CanvasJSReact.CanvasJSChart;
  //   var CanvasJS = CanvasJSReact.CanvasJS;
 class UserBehaviour extends Component{
-    render()
-    {
-
-        const options = {
-			animationEnabled: true,
+	constructor() {
+		super();
+		this.toggleDataSeries = this.toggleDataSeries.bind(this);
+	}
+	
+	toggleDataSeries(e){
+		if (typeof(e.dataSeries.visible) === "undefined" || e.dataSeries.visible) {
+			e.dataSeries.visible = false;
+		}
+		else{
+			e.dataSeries.visible = true;
+		}
+		this.chart.render();
+	}
+	
+	render() {
+		const options = {
 			theme: "light2",
-			title: {
-				text: "Rate Of User Interaction"
+			animationEnabled: true,
+			title:{
+				text: "Recieved time vs Action time"
+			},
+			subtitles: [{
+				text: "Notifications Recorded from Backend server"
+			}],
+			axisX: {
+				title: "States"
 			},
 			axisY: {
-				title: "Number of Notifications",
-				logarithmic: true,
+				title: "Refuse",
+				titleFontColor: "#6D78AD",
+				lineColor: "#6D78AD",
+				labelFontColor: "#6D78AD",
+				tickColor: "#6D78AD",
 				includeZero: false
+			},
+			axisY2: {
+				title: "Clicks",
+				titleFontColor: "#51CDA0",
+				lineColor: "#51CDA0",
+				labelFontColor: "#51CDA0",
+				tickColor: "#51CDA0",
+				includeZero: false
+			},
+			toolTip: {
+				shared: true
+			},
+			legend: {
+				cursor: "pointer",
+				itemclick: this.toggleDataSeries
 			},
 			data: [{
 				type: "spline",
+				name: "PER CLICKS",
 				showInLegend: true,
-				legendText: "PER CLICK NOTIFICATIONS",
+				xValueFormatString: "MMM ",
+				yValueFormatString: "#,##0 Units",
 				dataPoints: [
-				  { x: new Date(2001, 0), y: 1615},
-				  { x: new Date(2002, 0), y: 2069},
-				  { x: new Date(2003, 0), y: 2635},
-				  { x: new Date(2004, 0), y: 3723},
-				  { x: new Date(2005, 0), y: 5112},
-				  { x: new Date(2006, 0), y: 6660},
-				  { x: new Date(2007, 0), y: 9183},
-				  { x: new Date(2008, 0), y: 15844},
-				  { x: new Date(2009, 0), y: 23185},
-				  { x: new Date(2010, 0), y: 40336},
-				  { x: new Date(2011, 0), y: 70469},
-				  { x: new Date(2012, 0), y: 100504},
-				  { x: new Date(2013, 0), y: 138856},
-				  { x: new Date(2014, 0), y: 178391},
-				  { x: new Date(2015, 0), y: 229300},
-				  { x: new Date(2016, 0), y: 302300},
-				  { x: new Date(2017, 0), y: 405000}   
+					{ x: new Date(2019, 2, 1), y: 10 },
+					{ x: new Date(2019, 2, 1), y: 20 },
+					{ x: new Date(2019, 2, 1), y:30 },
+					{ x: new Date(2019, 2, 1), y: 40 },
+					{ x: new Date(2019, 2, 1), y:50 },
+					{ x: new Date(2019, 2, 1), y: 60 },
+					{ x: new Date(2019, 2, 1), y: 70 },
+					{ x: new Date(2019, 2, 1), y: 80 },
+					{ x: new Date(2019, 2, 1), y: 90 },
+					{ x: new Date(2019, 2, 1), y: 100 },
+					{ x: new Date(2019, 2, 1), y: 110 },
+					{ x: new Date(2019, 2, 1), y: 120 }
+				]
+			},
+			{
+				type: "spline",
+				name: "Frequency",
+				axisYType: "secondary",
+				showInLegend: true,
+				xValueFormatString: "MMM",
+				yValueFormatString: "$#,##0.#",
+				dataPoints: [
+					{ x: new Date(2019, 2, 1), y: 19034.5 },
+					{ x: new Date(2019, 2, 1), y: 20015 },
+					{ x: new Date(2019, 2, 1), y: 27342 },
+					{ x: new Date(2019, 2, 1), y: 20088 },
+					{ x: new Date(2019, 2, 1), y: 20234 },
+					{ x: new Date(2019, 2, 1), y: 29034 },
+					{ x: new Date(2019, 2, 1), y: 30487 },
+					{ x: new Date(2019, 2, 1), y: 32523 },
+					{ x: new Date(2019, 2, 1), y: 20234 },
+					{ x: new Date(2019, 2, 1), y: 27234 },
+					{ x: new Date(2019, 2, 1), y: 33548 },
+					{ x: new Date(2019, 2, 1), y: 32534 }
 				]
 			}]
-        }
-        
-      
-
-
-
-       return(
-        <React.Fragment>
-            <div>
+		}
+		
+		
+		return (
+		<div>
 			<CanvasJSChart options = {options} 
-				/* onRef={ref => this.chart = ref} */
+				 onRef={ref => this.chart = ref}
 			/>
 			{/*You can get reference to the chart instance as shown above using onRef. This allows you to access all chart properties and methods*/}
 		</div>
-    
-        </React.Fragment>
-
-
-        );
-
-    }
+		);
+	}
+			
 }
 export default UserBehaviour;   

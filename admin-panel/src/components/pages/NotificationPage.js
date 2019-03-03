@@ -1,19 +1,47 @@
 import React, { Component } from 'react';
 import CanvasJSReact from '../canvasjs.react';
+
+
+// import app from 'firebase/app';
+// var db_firebase = app.database();
+
 var CanvasJSChart = CanvasJSReact.CanvasJSChart;
 
 
 class NotificationPage extends Component{
+	constructor(props){
+		super(props);
+		this.state = {
+			action_time: '',
+			receive_time :''
+	
+		};
+	}
+
+	// componentDidMount() {
+	// 	const userRef = db_firebase.collection('sihh-6d358/send_notification_activity');
+	// 	userRef.get()
+	// 	.then(user => {
+	// 	  console.log(user)
+	// 	  })
+	// 	.catch(error => {
+	// 	  alert("check your network connection!!!" + error)
+	// 	  console.log(error);
+	// 	});
+	//   }
+	
+
+
   render()
   {
 
     const options = {
 			animationEnabled: true,
 			title: {
-				text: "Customer Satisfaction"
+				text: "NOTIFICATION INTERACTION"
 			},
 			subtitles: [{
-				text: "71% Positive",
+				text: "71% INTERACTION",
 				verticalAlign: "center",
 				fontSize: 24,
 				dockInsidePlotArea: true
@@ -24,38 +52,14 @@ class NotificationPage extends Component{
 				indexLabel: "{name}: {y}",
 				yValueFormatString: "#,###'%'",
 				dataPoints: [
-					{ name: "Unsatisfied", y: 5 },
-					{ name: "Very Unsatisfied", y: 31 },
-					{ name: "Very Satisfied", y: 40 },
-					{ name: "Satisfied", y: 17 },
-					{ name: "Neutral", y: 7 }
+					{ name: "DISMISSED", y: 5 },
+					{ name: "DELAYED DISMISSED", y: 31 },
+					{ name: "ACCEPTED ON TIME", y: 40 },
+					{ name: "DELAYED ACCEPTED", y: 17 },
+					{ name: "NO RESPONSE", y: 7 }
 				]
 			}]
 		}
-
-
-		// const nextc = {
-		// 	animationEnabled: true,
-		// 	exportEnabled: true,
-		// 	theme: "dark2", // "light1", "dark1", "dark2"
-		// 	title:{
-		// 		text: "Trip Expenses"
-		// 	},
-		// 	data: [{
-		// 		type: "pie",
-		// 		indexLabel: "{label}: {y}%",		
-		// 		startAngle: -90,
-		// 		dataPoints: [
-		// 			{ y: 20, label: "Airfare" },
-		// 			{ y: 24, label: "Food & Drinks" },
-		// 			{ y: 20, label: "Accomodation" },
-		// 			{ y: 14, label: "Transportation" },
-		// 			{ y: 12, label: "Activities" },
-		// 			{ y: 10, label: "Misc" }	
-		// 		]
-		// 	}]
-		// }
-		
 
 
     return(
@@ -69,8 +73,8 @@ class NotificationPage extends Component{
 
 
     );
-  }
-}
+	}}
+
 
 
 export default NotificationPage;
