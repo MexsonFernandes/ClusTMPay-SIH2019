@@ -1,5 +1,5 @@
 # ClusTMPay | Smart India Hackathon 2019 
-
+[![HitCount](http://hits.dwyl.com/MexsonFernandes/ClusTMPay-SIH2019.svg)](http://hits.dwyl.com/MexsonFernandes/ClusTMPay-SIH2019)
 <h1 align="center">
   <img src="resources/SIH_logo.png"/>
 </h1>
