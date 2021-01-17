@@ -5,7 +5,7 @@
   "author": "SIH 2019",
   "license": "",
   "dependencies": {
-    "axios": "^0.18.0",
+    "axios": "^0.21.1",
     "canvas-js": "^4.0.0",
     "canvasjs": "^1.8.1",
     "cors": "^2.8.5",
