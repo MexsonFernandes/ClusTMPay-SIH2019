@@ -46,7 +46,7 @@ pyasn1==0.4.5
 pyasn1-modules==0.2.4
 pycryptodome==3.6.6
 pyfcm==1.4.5
-PyJWT==1.6.4
+PyJWT==2.4.0
 Pyrebase==3.0.27
 python-dateutil==2.7.3
 python-jwt==2.0.1
